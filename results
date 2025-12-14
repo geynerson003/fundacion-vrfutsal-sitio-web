@@ -1,0 +1,61 @@
+function Results() {
+  const partidos = [
+    { categoria: "Sub-17", rival: "Academia Norte", marcador: "2 - 1", fecha: "2025-12-01", lugar: "Manizales" },
+    { categoria: "Sub-17", rival: "Deportivo Sur", marcador: "0 - 3", fecha: "2025-12-08", lugar: "Bogotá" },
+    { categoria: "Sub-15", rival: "Escuela XYZ", marcador: "4 - 2", fecha: "2025-12-03", lugar: "Medellín" },
+    { categoria: "Sub-13", rival: "Academia ABC", marcador: "1 - 1", fecha: "2025-12-05", lugar: "Cali" },
+  ];
+
+  return (
+    <section
+      className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 py-12"
+      style={{
+        backgroundImage: "url('/logo.png')", // logo en carpeta public
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* Overlay para contraste */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-green-900/80"></div>
+
+      {/* Contenido principal */}
+      <div className="relative z-10 max-w-5xl mx-auto">
+        <h1 className="text-5xl font-extrabold text-green-400 mb-10 drop-shadow-lg">
+          🏆 Resultados Deportivos — Fundación VR Futsal
+        </h1>
+
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse border border-green-700 shadow-lg bg-black/70 text-white">
+            <thead className="bg-green-700 text-white">
+              <tr>
+                <th className="border border-green-700 px-4 py-2">Categoría</th>
+                <th className="border border-green-700 px-4 py-2">Rival</th>
+                <th className="border border-green-700 px-4 py-2">Marcador</th>
+                <th className="border border-green-700 px-4 py-2">Fecha</th>
+                <th className="border border-green-700 px-4 py-2">Lugar</th>
+              </tr>
+            </thead>
+            <tbody>
+              {partidos.map((p, index) => (
+                <tr
+                  key={index}
+                  className="text-center hover:bg-green-900 transition duration-300"
+                >
+                  <td className="border border-green-700 px-4 py-2">{p.categoria}</td>
+                  <td className="border border-green-700 px-4 py-2">{p.rival}</td>
+                  <td className="border border-green-700 px-4 py-2 font-bold text-green-400">
+                    {p.marcador}
+                  </td>
+                  <td className="border border-green-700 px-4 py-2">{p.fecha}</td>
+                  <td className="border border-green-700 px-4 py-2">{p.lugar}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default Results;
