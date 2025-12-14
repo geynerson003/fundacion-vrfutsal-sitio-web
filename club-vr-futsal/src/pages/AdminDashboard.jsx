@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaImage, FaSignOutAlt, FaUpload, FaCheck, FaTimes } from 'react-icons/fa';
+import AdminSponsors from '../components/AdminSponsors';
 
 // Importar imágenes por defecto
 import heroBgDefault from '../assets/hero-bg.jpg';
@@ -22,6 +23,8 @@ const AdminDashboard = () => {
   const [uploading, setUploading] = useState(false);
   const [message, setMessage] = useState({ type: '', text: '' });
   const [currentImages, setCurrentImages] = useState({});
+  const [activeSection, setActiveSection] = useState('images');
+  const mainRef = useRef(null);
 
   useEffect(() => {
     // Verificar autenticación
@@ -192,7 +195,6 @@ const AdminDashboard = () => {
           <div className="flex justify-between items-center py-6">
             <div>
               <h1 className="text-2xl font-bold">Panel de Administración</h1>
-              <p className="text-green-100 text-sm">CLUB VR Futsal</p>
             </div>
             <button
               onClick={handleLogout}
@@ -207,6 +209,37 @@ const AdminDashboard = () => {
 
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Layout: Sidebar menu + Main content */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          {/* Sidebar / Menu */}
+          <aside className="md:col-span-1">
+            <div className="bg-white rounded-lg shadow p-4 sticky top-6">
+              <h3 className="font-bold text-lg mb-3">Secciones</h3>
+              <nav className="flex flex-col space-y-2">
+                <button
+                  onClick={() => {
+                    setActiveSection('images');
+                    setTimeout(() => document.getElementById('images-section')?.scrollIntoView({ behavior: 'smooth' }), 60);
+                  }}
+                  className={`text-left w-full px-3 py-2 rounded-lg hover:bg-gray-100 ${activeSection === 'images' ? 'bg-gray-100 font-semibold' : ''}`}
+                >
+                  Gestionar Imágenes
+                </button>
+                <button
+                  onClick={() => {
+                    setActiveSection('sponsors');
+                    setTimeout(() => document.getElementById('sponsors-section')?.scrollIntoView({ behavior: 'smooth' }), 60);
+                  }}
+                  className={`text-left w-full px-3 py-2 rounded-lg hover:bg-gray-100 ${activeSection === 'sponsors' ? 'bg-gray-100 font-semibold' : ''}`}
+                >
+                  Gestionar Patrocinadores
+                </button>
+              </nav>
+            </div>
+          </aside>
+
+          {/* Main content */}
+          <main className="md:col-span-3 space-y-6">
         {/* Messages */}
         {message.text && (
           <div className={`mb-6 p-4 rounded-lg border-l-4 ${
@@ -221,8 +254,50 @@ const AdminDashboard = () => {
           </div>
         )}
 
+        {/* Section Info */}
+        <div className="mb-6">
+          {activeSection === 'images' && (
+            <div className="p-4 rounded-lg border-l-4 bg-blue-50 border-green-500 text-green-800">
+              <h3 className="font-bold">Gestionar Imágenes</h3>
+              <p className="text-sm">Selecciona la imagen que quieras cambiar, revisa la vista previa y sube la nueva imagen. Las imágenes deben ser JPG/PNG y no superar 5MB.</p>
+            </div>
+          )}
+          {activeSection === 'sponsors' && (
+            <div className="p-4 rounded-lg border-l-4 bg-green-50 border-green-500 text-green-800">
+              <h3 className="font-bold">Gestionar Aliados y Patrocinadores</h3>
+              <p className="text-sm">Añade, edita o reordena Aliados y Patrocinadores. El campo "Tipo" define si se mostrará como Aliado o Patrocinador en la web pública.</p>
+            </div>
+          )}
+        </div>
+
+        {/* Instrucciones y Advertencia - mostrar antes de la subida y lista */}
+        {activeSection === 'images' && (
+          <>
+            <div className="mt-0 bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg">
+              <h3 className="font-bold text-blue-900 mb-2">Instrucciones — Gestionar Imágenes</h3>
+              <ul className="list-disc list-inside text-blue-800 space-y-1 text-sm">
+                <li>Selecciona la imagen para la sección correspondiente (p. ej. 'Imagen de Fondo Principal').</li>
+                <li>Verás una vista previa antes de subirla; confirma que sea la correcta.</li>
+                <li>Haz clic en "Subir Imagen" para enviar al servidor (o simular en modo desarrollo).</li>
+                <li>Formatos permitidos: JPG, PNG. Tamaño máximo: 5MB.</li>
+                <li>En entorno local la subida es simulada; en producción se guarda en el hosting con PHP.</li>
+              </ul>
+            </div>
+
+            {(window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && (
+              <div className="mt-6 bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-lg">
+                <h3 className="font-bold text-yellow-900 mb-2">⚠️ MODO DESARROLLO:</h3>
+                <p className="text-yellow-800 text-sm">
+                  Estás en desarrollo local. El panel de administración funciona en modo simulación.
+                  Para que las imágenes se suban realmente, debes desplegar el proyecto al hosting compartido con PHP.
+                </p>
+              </div>
+            )}
+          </>
+        )}
+
         {/* Upload Section */}
-        {preview && (
+        {activeSection === 'images' && preview && (
           <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
             <h2 className="text-xl font-bold text-secondary mb-4">Vista Previa</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -261,8 +336,9 @@ const AdminDashboard = () => {
           </div>
         )}
 
-        {/* Image List */}
-        <div className="bg-white rounded-lg shadow-lg p-6">
+        {/* Image List - sección anclada */}
+        {activeSection === 'images' && (
+          <div id="images-section" className="bg-white rounded-lg shadow-lg p-6">
           <h2 className="text-2xl font-bold text-secondary mb-6 flex items-center">
             <FaImage className="mr-3 text-primary" />
             Gestionar Imágenes
@@ -305,30 +381,33 @@ const AdminDashboard = () => {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Instructions */}
-        <div className="mt-6 bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg">
-          <h3 className="font-bold text-blue-900 mb-2">Instrucciones:</h3>
-          <ul className="list-disc list-inside text-blue-800 space-y-1 text-sm">
-            <li>Selecciona "Seleccionar Imagen" para la foto que deseas cambiar</li>
-            <li>Verás una vista previa de la imagen seleccionada</li>
-            <li>Haz clic en "Subir Imagen" para actualizar la foto en el sitio web</li>
-            <li>Las imágenes deben ser JPG o PNG y no superar 5MB</li>
-            <li>Después de subir, recarga la página web para ver los cambios</li>
-          </ul>
-        </div>
-
-        {/* Development Warning */}
-        {(window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && (
-          <div className="mt-6 bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-lg">
-            <h3 className="font-bold text-yellow-900 mb-2">⚠️ MODO DESARROLLO:</h3>
-            <p className="text-yellow-800 text-sm">
-              Estás en desarrollo local. El panel de administración funciona en modo simulación.
-              Para que las imágenes se suban realmente, debes desplegar el proyecto al hosting compartido con PHP.
-            </p>
           </div>
         )}
+
+        {activeSection === 'sponsors' && (
+          <div className="mt-6 bg-green-50 border-l-4 border-blue-500 p-6 rounded-lg">
+            <h3 className="font-bold text-blue-900 mb-2">Instrucciones — Gestionar Aliados y Patrocinadores</h3>
+            <ul className="list-disc list-inside text-blue-800 space-y-1 text-sm">
+              <li>Usa "Añadir" para crear un nuevo Aliado o Patrocinador.</li>
+              <li>El campo <strong>Tipo</strong> determina si será "Aliado" o "Patrocinador" en tu gestor.</li>
+              <li>Logo: puedes pegar una URL o subir una imagen (se guarda en <code>localStorage</code> como DataURL en modo local).</li>
+              <li><strong>Recomendable: </strong>Pasar tu logo por <strong><a href="https://www.remove.bg/es">Remove.bg</a></strong> para eliminar el fondo del logo</li>
+              <li>Estado: marca <em>Activo</em> para que se muestre públicamente; <em>Inactivo</em> lo ocultará.</li>
+              <li>Reordena con las flechas para cambiar la prioridad/posición en la lista pública.</li>
+              <li>Eliminar pedirá confirmación; los cambios se guardan automáticamente en el panel.</li>
+            </ul>
+          </div>
+        )}
+
+        {/* Sponsors - sección anclada */}
+        {activeSection === 'sponsors' && (
+          <div id="sponsors-section" className="mt-6">
+            <AdminSponsors />
+          </div>
+        )}
+
+          </main>
+        </div>
       </div>
     </div>
   );

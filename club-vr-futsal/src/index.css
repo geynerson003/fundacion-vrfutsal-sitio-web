@@ -43,3 +43,59 @@ html {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 132, 61, 0.2);
 }
+
+/* ----------------------------------------------------------------------- */
+/* Professional Background with Radial Vignette Effect                       */
+/* ----------------------------------------------------------------------- */
+.page-bg {
+  position: relative;
+  min-height: 100vh;
+  background-image: var(--bg-img);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-color: #0a1612; /* fallback oscuro profesional */
+  overflow: hidden;
+}
+
+/* Vignette overlay - mantiene el centro nítido con degradado radial suave */
+.page-bg.page-bg--opt2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 35%,
+    rgba(7, 31, 26, 0.4) 60%,
+    rgba(7, 31, 26, 0.75) 85%,
+    rgba(7, 31, 26, 0.92) 100%
+  );
+}
+
+/* Overlay adicional para mejorar contraste del texto */
+.page-bg.page-bg--opt2::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3) 0%,
+    transparent 20%,
+    transparent 80%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+}
+
+/* Aseguramos que el contenido quede por encima de los overlays */
+.page-bg > * { position: relative; z-index: 2; }

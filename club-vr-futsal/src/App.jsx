@@ -6,6 +6,7 @@ import About from './pages/About';
 import Gallery from './pages/Gallery';
 import Schedule from './pages/Schedule';
 import Contact from './pages/Contact';
+import AliadosPatrocinadores from './pages/AliadosPatrocinadores';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import ScrollToTop from './components/ScrollToTop';
@@ -27,6 +28,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/nosotros" element={<About />} />
+                <Route path="/aliados" element={<AliadosPatrocinadores />} />
                 <Route path="/galeria" element={<Gallery />} />
                 <Route path="/horarios" element={<Schedule />} />
                 <Route path="/contacto" element={<Contact />} />

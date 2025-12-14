@@ -18,6 +18,7 @@ const Navbar = () => {
   const navLinks = [
     { path: '/', label: 'Inicio' },
     { path: '/nosotros', label: 'Nosotros' },
+    { path: '/aliados', label: 'Aliados' },
     { path: '/galeria', label: 'Galería' },
     { path: '/horarios', label: 'Horarios' },
     { path: '/contacto', label: 'Contacto' },
