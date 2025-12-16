@@ -1,7 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaImage, FaSignOutAlt, FaUpload, FaCheck, FaTimes } from 'react-icons/fa';
 import AdminSponsors from '../components/AdminSponsors';
+import AdminResults from '../components/AdminResults';
 
 // Importar imágenes por defecto
 import heroBgDefault from '../assets/hero-bg.jpg';
@@ -24,7 +25,6 @@ const AdminDashboard = () => {
   const [message, setMessage] = useState({ type: '', text: '' });
   const [currentImages, setCurrentImages] = useState({});
   const [activeSection, setActiveSection] = useState('images');
-  const mainRef = useRef(null);
 
   useEffect(() => {
     // Verificar autenticación
@@ -165,6 +165,7 @@ const AdminDashboard = () => {
         setMessage({ type: 'error', text: data.message || 'Error al subir la imagen' });
       }
     } catch (error) {
+      console.error('Error al subir la imagen:', error.message);
       setMessage({ 
         type: 'error', 
         text: 'Error de conexión. Asegúrate de que el archivo /api/upload-image.php esté en el servidor y que PHP esté habilitado.' 
@@ -234,6 +235,15 @@ const AdminDashboard = () => {
                 >
                   Gestionar Patrocinadores
                 </button>
+                <button
+                  onClick={() => {
+                    setActiveSection('results');
+                    setTimeout(() => document.getElementById('results-section')?.scrollIntoView({ behavior: 'smooth' }), 60);
+                  }}
+                  className={`text-left w-full px-3 py-2 rounded-lg hover:bg-gray-100 ${activeSection === 'results' ? 'bg-gray-100 font-semibold' : ''}`}
+                >
+                  Gestionar Resultados
+                </button>
               </nav>
             </div>
           </aside>
@@ -266,6 +276,12 @@ const AdminDashboard = () => {
             <div className="p-4 rounded-lg border-l-4 bg-green-50 border-green-500 text-green-800">
               <h3 className="font-bold">Gestionar Aliados y Patrocinadores</h3>
               <p className="text-sm">Añade, edita o reordena Aliados y Patrocinadores. El campo "Tipo" define si se mostrará como Aliado o Patrocinador en la web pública.</p>
+            </div>
+          )}
+          {activeSection === 'results' && (
+            <div className="p-4 rounded-lg border-l-4 bg-green-50 border-green-500 text-green-800">
+              <h3 className="font-bold">Gestionar Resultados</h3>
+              <p className="text-sm">Crea, edita y reordena resultados por categoría. Solo los marcados como <strong>Activo</strong> se muestran en la página pública.</p>
             </div>
           )}
         </div>
@@ -399,10 +415,29 @@ const AdminDashboard = () => {
           </div>
         )}
 
+        {activeSection === 'results' && (
+          <div className="mt-6 bg-green-50 border-l-4 border-blue-500 p-6 rounded-lg">
+            <h3 className="font-bold text-blue-900 mb-2">Instrucciones — Gestionar Resultados</h3>
+            <ul className="list-disc list-inside text-blue-800 space-y-1 text-sm">
+              <li>Usa "Añadir" para crear un nuevo resultado.</li>
+              <li>Recomendado: mantener el marcador en formato <strong>“2 - 1”</strong>.</li>
+              <li><strong>Estado:</strong> solo los resultados <em>Activos</em> se ven en la página pública.</li>
+              <li>Reordena con las flechas para cambiar la prioridad/orden.</li>
+              <li>Nota: por ahora se guarda en <code>localStorage</code> (mismo navegador). Para un admin real multi-dispositivo se necesita backend.</li>
+            </ul>
+          </div>
+        )}
+
         {/* Sponsors - sección anclada */}
         {activeSection === 'sponsors' && (
           <div id="sponsors-section" className="mt-6">
             <AdminSponsors />
+          </div>
+        )}
+
+        {activeSection === 'results' && (
+          <div id="results-section" className="mt-6">
+            <AdminResults />
           </div>
         )}
 
