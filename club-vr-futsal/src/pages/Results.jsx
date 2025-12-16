@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import heroBgDefault from '../assets/hero-bg.jpg';
 
 const fallbackMatches = [
@@ -26,28 +26,19 @@ const Results = () => {
     }
   }, []);
 
-  const matches = useMemo(() => {
-    const base = Array.isArray(storedMatches) ? storedMatches : fallbackMatches;
-    const normalized = base
-      .map((m) => ({
-        ...m,
-        status: m.status || 'Activo',
-      }))
-      .filter((m) => (m.status || 'Activo') === 'Activo')
-      .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+  const base = Array.isArray(storedMatches) ? storedMatches : fallbackMatches;
+  const matches = base
+    .map((m) => ({
+      ...m,
+      status: m.status || 'Activo',
+    }))
+    .filter((m) => (m.status || 'Activo') === 'Activo')
+    .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
 
-    return normalized;
-  }, [storedMatches, fallbackMatches]);
+  const categories = ['Todas', ...Array.from(new Set(matches.map((m) => m.category).filter(Boolean)))];
 
-  const categories = useMemo(() => {
-    const set = new Set(matches.map((m) => m.category).filter(Boolean));
-    return ['Todas', ...Array.from(set)];
-  }, [matches]);
-
-  const filteredMatches = useMemo(() => {
-    if (activeCategory === 'Todas') return matches;
-    return matches.filter((m) => m.category === activeCategory);
-  }, [activeCategory, matches]);
+  const filteredMatches =
+    activeCategory === 'Todas' ? matches : matches.filter((m) => m.category === activeCategory);
 
   return (
     <div
