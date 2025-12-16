@@ -21,6 +21,7 @@ const Navbar = () => {
     { path: '/aliados', label: 'Aliados' },
     { path: '/galeria', label: 'Galería' },
     { path: '/horarios', label: 'Horarios' },
+    { path: '/resultados', label: 'Resultados' },
     { path: '/contacto', label: 'Contacto' },
   ];
 
