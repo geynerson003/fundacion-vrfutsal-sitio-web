@@ -1,6 +1,13 @@
 import { Link } from 'react-router-dom';
-import { FaFacebook, FaInstagram, FaWhatsapp, FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaWhatsapp, FaMapMarkerAlt, FaPhone, FaEnvelope, FaTiktok } from 'react-icons/fa';
 import Logo from './Logo';
+
+const socialLinks = {
+  facebook: 'https://www.facebook.com/share/1GriSAeL3z/',
+  instagram: 'https://www.instagram.com/clubvrfutsal/',
+  tiktok: 'https://www.tiktok.com/@clubv.rfutsal/',
+  whatsapp: 'https://wa.me/573008265065',
+};
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -81,7 +88,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4 text-primary">Síguenos</h4>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href={socialLinks.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-800 p-3 rounded-full hover:bg-primary transition-colors duration-300"
@@ -90,7 +97,7 @@ const Footer = () => {
                 <FaFacebook size={24} />
               </a>
               <a
-                href="#"
+                href={socialLinks.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-800 p-3 rounded-full hover:bg-primary transition-colors duration-300"
@@ -99,7 +106,16 @@ const Footer = () => {
                 <FaInstagram size={24} />
               </a>
               <a
-                href="#"
+                href={socialLinks.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-800 p-3 rounded-full hover:bg-primary transition-colors duration-300"
+                aria-label="TikTok"
+              >
+                <FaTiktok size={24} />
+              </a>
+              <a
+                href={socialLinks.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-800 p-3 rounded-full hover:bg-primary transition-colors duration-300"
