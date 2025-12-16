@@ -21,7 +21,7 @@ const Footer = () => {
             <div className="flex items-center space-x-2 mb-4">
               <Logo className="w-12 h-12" />
               <div>
-                <h3 className="text-lg font-bold">CLUB VR Futsal</h3>
+                <h3 className="text-lg font-bold">Fundación Deportiva Club V.R</h3>
               </div>
             </div>
             <p className="text-gray-400 text-sm italic">
@@ -134,7 +134,7 @@ const Footer = () => {
         <div className="border-t border-gray-700 mt-8 pt-8">
           <div className="flex justify-between items-center">
             <p className="text-gray-400 text-sm">
-              &copy; {currentYear} CLUB VR Futsal. Todos los derechos reservados.
+              &copy; {currentYear} Fundación Deportiva Club V.R. Todos los derechos reservados.
             </p>
             
             {/* Botón discreto de administración */}

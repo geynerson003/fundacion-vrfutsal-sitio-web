@@ -38,7 +38,7 @@ const About = () => {
                 Nuestra Historia
               </h2>
               <p className="text-lg text-gray-700 mb-4">
-                CLUB VR Futsal nació con el sueño de formar niños y jóvenes no solo como 
+                Fundación Deportiva Club V.R nació con el sueño de formar niños y jóvenes no solo como 
                 deportistas excepcionales, sino como personas íntegras y comprometidas con 
                 su comunidad.
               </p>
@@ -56,7 +56,7 @@ const About = () => {
             <div className="relative">
               <img 
                 src={aboutImage} 
-                alt="Equipo CLUB VR Futsal" 
+                alt="Equipo Fundación Deportiva Club V.R" 
                 className="w-full h-96 object-cover rounded-lg shadow-xl"
               />
             </div>
@@ -93,7 +93,7 @@ const About = () => {
                 <h3 className="text-3xl font-bold text-secondary">Nuestra Visión</h3>
               </div>
               <p className="text-lg text-gray-700 leading-relaxed">
-                Ser reconocidos como la fundación líder en formación de fútbol sala 
+                Ser reconocidos como la Fundación Deportiva líder en formación de fútbol sala 
                 en Bogotá, destacándonos por la excelencia deportiva y el desarrollo 
                 integral de nuestros jugadores, siendo un referente en valores y 
                 compromiso social.
@@ -201,7 +201,7 @@ const About = () => {
             ¡Forma parte de nuestra historia!
           </h2>
           <p className="text-xl mb-8">
-            Únete a CLUB VR Futsal y sé parte de una comunidad que transforma vidas
+            Únete a Fundación Deportiva Club V.R y sé parte de una comunidad que transforma vidas
           </p>
           <a
             href="/contacto"

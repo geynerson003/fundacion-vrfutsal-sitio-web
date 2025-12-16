@@ -37,8 +37,8 @@ const Navbar = () => {
           <Link to="/" className="flex items-center space-x-3" onClick={closeMenu}>
             <Logo className="w-14 h-14" />
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-secondary">CLUB VR</span>
-              <span className="text-sm font-semibold text-primary">Futsal</span>
+              <span className="text-xl font-bold text-secondary">Fundación Deportiva</span>
+              <span className="text-sm font-semibold text-primary">Club V.R</span>
             </div>
           </Link>
 

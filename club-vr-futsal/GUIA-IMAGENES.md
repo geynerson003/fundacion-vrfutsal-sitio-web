@@ -111,7 +111,7 @@ import aboutImage from '../assets/about-team.jpg';
 <div className="relative">
   <img 
     src={aboutImage} 
-    alt="Equipo CLUB VR Futsal" 
+    alt="Equipo Fundación Deportiva Club V.R" 
     className="w-full h-96 object-cover rounded-lg shadow-xl"
   />
 </div>

@@ -51,7 +51,7 @@ const Results = () => {
             Resultados Deportivos
           </h1>
           <p className="mt-4 text-lg md:text-xl text-gray-100 max-w-3xl mx-auto">
-            Marcadores recientes por categoría de Fundación V.R. Futsal.
+            Marcadores recientes por categoría de Fundación Deportiva Club V.R.
           </p>
         </div>
       </header>

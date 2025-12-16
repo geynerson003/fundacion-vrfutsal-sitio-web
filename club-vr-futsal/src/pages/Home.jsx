@@ -34,7 +34,7 @@ const Home = () => {
         
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto fade-in">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-balance">
-            CLUB VR Futsal
+            Fundación Deportiva Club V.R
           </h1>
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">
             Formando Campeones
@@ -75,7 +75,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-secondary mb-4">
-              ¿Por qué elegir CLUB VR Futsal?
+              ¿Por qué elegir Fundación Deportiva Club V.R?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Brindamos una formación integral que va más allá del deporte
@@ -183,7 +183,7 @@ const Home = () => {
             ¿Listo para ser parte de nuestra familia?
           </h2>
           <p className="text-xl mb-8">
-            Únete a CLUB VR Futsal y descubre todo tu potencial en el fútbol sala
+            Únete a Fundación Deportiva Club V.R y descubre todo tu potencial en el fútbol sala
           </p>
           <Link
             to="/contacto"

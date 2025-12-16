@@ -61,7 +61,7 @@ const Gallery = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl font-bold mb-6 fade-in">Galería</h1>
           <p className="text-xl max-w-3xl mx-auto">
-            Momentos especiales y recuerdos de nuestra familia CLUB VR Futsal
+            Momentos especiales y recuerdos de nuestra familia Fundación Deportiva Club V.R
           </p>
         </div>
       </section>
@@ -127,14 +127,14 @@ const Gallery = () => {
                 <iframe
                   style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
                   src="https://www.youtube.com/embed/kZMQRStt6eI"
-                  title="CLUB VR Futsal - Video 1"
+                  title="Fundación Deportiva Club V.R - Video 1"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>
               </div>
               <div className="p-4">
-                <h3 className="font-bold text-lg">CLUB VR Futsal</h3>
+                <h3 className="font-bold text-lg">Fundación Deportiva Club V.R</h3>
                 <p className="text-gray-600 text-sm">Actividades y momentos especiales</p>
               </div>
             </div>
@@ -145,14 +145,14 @@ const Gallery = () => {
                 <iframe
                   style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
                   src="https://www.youtube.com/embed/_AsqrP7EjvY"
-                  title="CLUB VR Futsal - Video 2"
+                  title="Fundación Deportiva Club V.R - Video 2"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>
               </div>
               <div className="p-4">
-                <h3 className="font-bold text-lg">CLUB VR Futsal</h3>
+                <h3 className="font-bold text-lg">Fundación Deportiva Club V.R</h3>
                 <p className="text-gray-600 text-sm">Entrenamientos y competencias</p>
               </div>
             </div>

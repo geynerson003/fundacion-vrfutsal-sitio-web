@@ -46,7 +46,7 @@ const AdminLogin = () => {
             Panel de Administración
           </h2>
           <p className="mt-2 text-center text-sm text-green-100">
-            CLUB VR Futsal
+            Fundación Deportiva Club V.R
           </p>
         </div>
 

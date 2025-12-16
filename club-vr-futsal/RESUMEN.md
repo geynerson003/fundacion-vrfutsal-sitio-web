@@ -1,4 +1,4 @@
-# 🎉 ¡Proyecto CLUB VR Futsal Completado!
+# 🎉 ¡Proyecto Fundación Deportiva Club V.R Completado!
 
 ## ✅ Lo que se ha creado
 
@@ -36,7 +36,7 @@
 
 ### Componentes Reutilizables
 
-- **Logo**: SVG del escudo CLUB VR Futsal
+- **Logo**: SVG del escudo Fundación Deportiva Club V.R
 - **Navbar**: Navegación responsive con menú móvil
 - **Footer**: Pie de página completo con enlaces y redes sociales
 - **ScrollToTop**: Scroll automático al cambiar de página
@@ -201,7 +201,7 @@ club-vr-futsal/
 
 ## 🎊 ¡Felicitaciones!
 
-Tu sitio web para CLUB VR Futsal está completamente listo. Solo necesitas:
+Tu sitio web para Fundación Deportiva Club V.R está completamente listo. Solo necesitas:
 1. Personalizar el contenido (fotos, contacto)
 2. Hacer el build
 3. Subir al hosting
@@ -212,5 +212,5 @@ Tu sitio web para CLUB VR Futsal está completamente listo. Solo necesitas:
 
 **"Dios, Decisión y Disciplina nos hace grandes"**
 
-CLUB VR Futsal © 2025
+Fundación Deportiva Club V.R © 2025
 

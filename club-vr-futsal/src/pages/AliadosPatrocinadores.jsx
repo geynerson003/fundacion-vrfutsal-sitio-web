@@ -83,7 +83,7 @@ const AliadosPatrocinadores = () => {
                   }}
                 >
                   <p className="font-semibold text-lg md:text-xl text-green-100">
-                    Al convertirte en aliado o patrocinador de Fundación V.R. Futsal, no solo apoyas un equipo...
+                    Al convertirte en aliado o patrocinador de Fundación Deportiva Club V.R, no solo apoyas un equipo...
                   </p>
                   <p className="font-medium">
                     <strong className="text-green-200">✓ Transformas vidas:</strong> Brindas oportunidades a jóvenes talentos para desarrollar sus habilidades deportivas y valores.

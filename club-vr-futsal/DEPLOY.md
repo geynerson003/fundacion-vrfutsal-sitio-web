@@ -1,4 +1,4 @@
-# Guía de Despliegue - CLUB VR Futsal
+# Guía de Despliegue - Fundación Deportiva Club V.R
 
 ## 📋 Requisitos Previos
 

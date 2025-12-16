@@ -1,4 +1,4 @@
-# 🔐 Panel de Administración - CLUB VR Futsal
+# 🔐 Panel de Administración - Fundación Deportiva Club V.R
 
 ## Acceso al Panel
 

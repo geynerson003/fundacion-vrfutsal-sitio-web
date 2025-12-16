@@ -1,6 +1,6 @@
-# CLUB VR Futsal — Sitio Web
+# Fundación Deportiva Club V.R — Sitio Web
 
-Sitio web de CLUB VR Futsal (Vite + React + React Router + Tailwind).
+Sitio web de Fundación Deportiva Club V.R (Vite + React + React Router + Tailwind).
 
 ## Requisitos
 
