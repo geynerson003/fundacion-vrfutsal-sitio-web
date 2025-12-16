@@ -1,4 +1,11 @@
-import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaWhatsapp, FaFacebook, FaInstagram, FaClock } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaWhatsapp, FaFacebook, FaInstagram, FaClock, FaTiktok } from 'react-icons/fa';
+
+const socialLinks = {
+  whatsapp: 'https://wa.me/573008265065',
+  facebook: 'https://www.facebook.com/share/1GriSAeL3z/',
+  instagram: 'https://www.instagram.com/clubvrfutsal/',
+  tiktok: 'https://www.tiktok.com/@clubv.rfutsal/',
+};
 
 const Contact = () => {
   return (
@@ -79,7 +86,7 @@ const Contact = () => {
                 <h3 className="text-2xl font-bold text-secondary mb-6">Síguenos en Redes Sociales</h3>
                 <div className="flex space-x-4">
                   <a
-                    href="#"
+                    href={socialLinks.whatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-primary hover:bg-green-700 text-white w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg"
@@ -88,7 +95,7 @@ const Contact = () => {
                     <FaWhatsapp size={28} />
                   </a>
                   <a
-                    href="#"
+                    href={socialLinks.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-primary hover:bg-green-700 text-white w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg"
@@ -97,13 +104,22 @@ const Contact = () => {
                     <FaFacebook size={28} />
                   </a>
                   <a
-                    href="#"
+                    href={socialLinks.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-primary hover:bg-green-700 text-white w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg"
                     aria-label="Instagram"
                   >
                     <FaInstagram size={28} />
+                  </a>
+                  <a
+                    href={socialLinks.tiktok}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-primary hover:bg-green-700 text-white w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg"
+                    aria-label="TikTok"
+                  >
+                    <FaTiktok size={28} />
                   </a>
                 </div>
               </div>
@@ -183,7 +199,7 @@ const Contact = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://wa.me/57XXXXXXXXXX"
+              href={socialLinks.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center bg-white text-primary px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg"
