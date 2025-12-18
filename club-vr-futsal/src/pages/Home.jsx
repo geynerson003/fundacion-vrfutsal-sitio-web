@@ -1,22 +1,10 @@
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import { FaTrophy, FaUsers, FaFutbol, FaHeart } from 'react-icons/fa';
-import heroBgDefault from '../assets/hero-bg.jpg';
+
+// Imagen de fondo desde Supabase Storage
+const heroBg = 'https://lwpcpowhyfexadeukygy.supabase.co/storage/v1/object/public/gallery/hero-bg.jpg';
 
 const Home = () => {
-  const [heroBg, setHeroBg] = useState(heroBgDefault);
-
-  useEffect(() => {
-    // Intentar cargar imagen desde uploads/
-    const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    
-    if (!isDevelopment) {
-      const img = new Image();
-      img.onload = () => setHeroBg('/uploads/hero-bg.jpg?v=' + Date.now());
-      img.onerror = () => setHeroBg(heroBgDefault);
-      img.src = '/uploads/hero-bg.jpg';
-    }
-  }, []);
 
   return (
     <div className="min-h-screen">
@@ -34,7 +22,7 @@ const Home = () => {
         
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto fade-in">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-balance">
-            CLUB VR Futsal
+            Fundación Deportiva Club V.R
           </h1>
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">
             Formando Campeones
@@ -75,7 +63,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-secondary mb-4">
-              ¿Por qué elegir CLUB VR Futsal?
+              ¿Por qué elegir Fundación Deportiva Club V.R?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Brindamos una formación integral que va más allá del deporte
@@ -148,7 +136,6 @@ const Home = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {[
-              { name: 'Sub-7', age: '5-6 años' },
               { name: 'Sub-9', age: '7-8 años' },
               { name: 'Sub-11', age: '9-10 años' },
               { name: 'Sub-13', age: '11-12 años' },
@@ -183,7 +170,7 @@ const Home = () => {
             ¿Listo para ser parte de nuestra familia?
           </h2>
           <p className="text-xl mb-8">
-            Únete a CLUB VR Futsal y descubre todo tu potencial en el fútbol sala
+            Únete a Fundación Deportiva Club V.R y descubre todo tu potencial en el fútbol sala
           </p>
           <Link
             to="/contacto"

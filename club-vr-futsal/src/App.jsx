@@ -7,12 +7,15 @@ import Gallery from './pages/Gallery';
 import Schedule from './pages/Schedule';
 import Contact from './pages/Contact';
 import AliadosPatrocinadores from './pages/AliadosPatrocinadores';
+import Results from './pages/Results';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import ScrollToTop from './components/ScrollToTop';
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
   return (
+    <AuthProvider>
     <Router>
       <ScrollToTop />
       <Routes>
@@ -31,6 +34,7 @@ function App() {
                 <Route path="/aliados" element={<AliadosPatrocinadores />} />
                 <Route path="/galeria" element={<Gallery />} />
                 <Route path="/horarios" element={<Schedule />} />
+                <Route path="/resultados" element={<Results />} />
                 <Route path="/contacto" element={<Contact />} />
               </Routes>
             </main>
@@ -39,6 +43,7 @@ function App() {
         } />
       </Routes>
     </Router>
+    </AuthProvider>
   );
 }
 

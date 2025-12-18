@@ -1,37 +1,62 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaUser, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaUser, FaLock, FaEye, FaEyeSlash, FaEnvelope } from 'react-icons/fa';
+import { useAuth } from '../hooks/useAuth';
 
 const AdminLogin = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { signIn, isAuthenticated, loading: authLoading } = useAuth();
 
-  const handleLogin = (e) => {
+  useEffect(() => {
+    // Si ya está autenticado, redirigir al dashboard
+    if (!authLoading && isAuthenticated) {
+      navigate('/admin/dashboard');
+    }
+  }, [isAuthenticated, authLoading, navigate]);
+
+  const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
     setLoading(true);
 
-    // Credenciales
-    const ADMIN_USER = 'admin';
-    const ADMIN_PASS = 'Zencode123*';
-
-    // Simular delay de autenticación
-    setTimeout(() => {
-      if (username === ADMIN_USER && password === ADMIN_PASS) {
-        // Guardar sesión
-        sessionStorage.setItem('adminAuth', 'true');
-        sessionStorage.setItem('adminUser', username);
-        navigate('/admin/dashboard');
-      } else {
-        setError('Usuario o contraseña incorrectos');
+    try {
+      const { error: signInError } = await signIn(email, password);
+      
+      if (signInError) {
+        // Traducir mensajes de error comunes
+        if (signInError.message.includes('Invalid login credentials')) {
+          setError('Correo o contraseña incorrectos');
+        } else if (signInError.message.includes('Email not confirmed')) {
+          setError('Por favor confirma tu correo electrónico');
+        } else {
+          setError(signInError.message);
+        }
         setLoading(false);
+        return;
       }
-    }, 500);
+
+      navigate('/admin/dashboard');
+    } catch (err) {
+      setError('Error al iniciar sesión. Intenta de nuevo.');
+      console.error('Login error:', err);
+    } finally {
+      setLoading(false);
+    }
   };
+
+  // Mostrar loading mientras se verifica autenticación
+  if (authLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary to-green-700">
+        <div className="text-white text-xl">Cargando...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary to-green-700 py-12 px-4 sm:px-6 lg:px-8">
@@ -46,7 +71,7 @@ const AdminLogin = () => {
             Panel de Administración
           </h2>
           <p className="mt-2 text-center text-sm text-green-100">
-            CLUB VR Futsal
+            Fundación Deportiva Club V.R
           </p>
         </div>
 
@@ -59,22 +84,23 @@ const AdminLogin = () => {
             )}
 
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
-                Usuario
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                Correo Electrónico
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <FaUser className="text-gray-400" />
+                  <FaEnvelope className="text-gray-400" />
                 </div>
                 <input
-                  id="username"
-                  name="username"
-                  type="text"
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
                   required
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="appearance-none block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                  placeholder="Ingresa tu usuario"
+                  placeholder="admin@ejemplo.com"
                 />
               </div>
             </div>
