@@ -1,7 +1,7 @@
 import React, { useMemo, useRef, Suspense } from 'react';
 import { Image, Billboard, Text, RoundedBox } from "@react-three/drei";
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Center, Environment, Html } from '@react-three/drei';
+import { OrbitControls, Center, Environment } from '@react-three/drei';
 import * as THREE from 'three';
 
 // Error Boundary para capturar errores de Three.js

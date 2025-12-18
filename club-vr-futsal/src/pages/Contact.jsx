@@ -1,4 +1,4 @@
-import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaWhatsapp, FaFacebook, FaInstagram, FaClock, FaTiktok } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaEnvelope, FaWhatsapp, FaFacebook, FaInstagram, FaClock, FaTiktok } from 'react-icons/fa';
 
 const socialLinks = {
   whatsapp: 'https://wa.me/573165404696',
