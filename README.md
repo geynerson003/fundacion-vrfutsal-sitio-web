@@ -46,8 +46,7 @@ El build queda en `club-vr-futsal/dist/`.
 - `/admin/login`
 - `/admin/dashboard`
 
-Nota: el panel actualmente guarda datos (patrocinadores/resultados) en `localStorage` del navegador. Para administración real multi-dispositivo se necesita backend.
 
 ## Deploy
 
-Guía completa en `club-vr-futsal/DEPLOY.md`.
+Este proyecto esta desplegado en Netlify y haciendo uso de supabase.
