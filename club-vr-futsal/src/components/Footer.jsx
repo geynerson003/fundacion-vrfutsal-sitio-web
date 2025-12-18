@@ -1,6 +1,13 @@
 import { Link } from 'react-router-dom';
-import { FaFacebook, FaInstagram, FaWhatsapp, FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaWhatsapp, FaMapMarkerAlt, FaPhone, FaEnvelope, FaTiktok } from 'react-icons/fa';
 import Logo from './Logo';
+
+const socialLinks = {
+  facebook: 'https://www.facebook.com/share/1GriSAeL3z/',
+  instagram: 'https://www.instagram.com/clubvrfutsal/',
+  tiktok: 'https://www.tiktok.com/@clubv.rfutsal/',
+  whatsapp: 'https://wa.me/573165404696',
+};
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -14,7 +21,7 @@ const Footer = () => {
             <div className="flex items-center space-x-2 mb-4">
               <Logo className="w-12 h-12" />
               <div>
-                <h3 className="text-lg font-bold">CLUB VR Futsal</h3>
+                <h3 className="text-lg font-bold">Fundación Deportiva Club V.R</h3>
               </div>
             </div>
             <p className="text-gray-400 text-sm italic">
@@ -61,17 +68,13 @@ const Footer = () => {
               <li className="flex items-start space-x-2">
                 <FaMapMarkerAlt className="text-primary mt-1 flex-shrink-0" />
                 <span className="text-gray-400 text-sm">
-                  Calle 71 # 73a-44<br />
+                  Calle 69a # 75-32 <br />
                   Bogotá, Colombia
                 </span>
               </li>
               <li className="flex items-center space-x-2">
-                <FaPhone className="text-primary flex-shrink-0" />
-                <span className="text-gray-400 text-sm">+57 XXX XXX XXXX</span>
-              </li>
-              <li className="flex items-center space-x-2">
                 <FaEnvelope className="text-primary flex-shrink-0" />
-                <span className="text-gray-400 text-sm">info@clubvrfutsal.com</span>
+                <span className="text-gray-400 text-sm">clubvrfutsal@gmail.com</span>
               </li>
             </ul>
           </div>
@@ -81,7 +84,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4 text-primary">Síguenos</h4>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href={socialLinks.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-800 p-3 rounded-full hover:bg-primary transition-colors duration-300"
@@ -90,7 +93,7 @@ const Footer = () => {
                 <FaFacebook size={24} />
               </a>
               <a
-                href="#"
+                href={socialLinks.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-800 p-3 rounded-full hover:bg-primary transition-colors duration-300"
@@ -99,7 +102,16 @@ const Footer = () => {
                 <FaInstagram size={24} />
               </a>
               <a
-                href="#"
+                href={socialLinks.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-800 p-3 rounded-full hover:bg-primary transition-colors duration-300"
+                aria-label="TikTok"
+              >
+                <FaTiktok size={24} />
+              </a>
+              <a
+                href={socialLinks.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-800 p-3 rounded-full hover:bg-primary transition-colors duration-300"
@@ -118,7 +130,7 @@ const Footer = () => {
         <div className="border-t border-gray-700 mt-8 pt-8">
           <div className="flex justify-between items-center">
             <p className="text-gray-400 text-sm">
-              &copy; {currentYear} CLUB VR Futsal. Todos los derechos reservados.
+              &copy; {currentYear} Fundación Deportiva Club V.R. Todos los derechos reservados.
             </p>
             
             {/* Botón discreto de administración */}
