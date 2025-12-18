@@ -11,9 +11,11 @@ import Results from './pages/Results';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import ScrollToTop from './components/ScrollToTop';
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
   return (
+    <AuthProvider>
     <Router>
       <ScrollToTop />
       <Routes>
@@ -41,6 +43,7 @@ function App() {
         } />
       </Routes>
     </Router>
+    </AuthProvider>
   );
 }
 
