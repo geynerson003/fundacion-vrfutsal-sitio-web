@@ -1,11 +1,37 @@
-import React, { useMemo, useRef } from 'react';
+import React, { useMemo, useRef, Suspense } from 'react';
 import { Image, Billboard, Text, RoundedBox } from "@react-three/drei";
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Center, Environment, Html } from '@react-three/drei';
 import * as THREE from 'three';
 
+// Error Boundary para capturar errores de Three.js
+class ThreeErrorBoundary extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { hasError: false };
+    }
 
-// --- Geometry Helpers (Optimized) ---
+    static getDerivedStateFromError() {
+        return { hasError: true };
+    }
+
+    componentDidCatch(error, errorInfo) {
+        console.error('BallModel error:', error, errorInfo);
+    }
+
+    render() {
+        if (this.state.hasError) {
+            return (
+                <div className="w-full h-[500px] flex items-center justify-center bg-black/20 rounded-lg">
+                    <p className="text-white/60">Error cargando modelo 3D</p>
+                </div>
+            );
+        }
+        return this.props.children;
+    }
+}
+
+
 
 // Create Truncated Icosahedron data once
 const createSoccerBallData = (radius) => {
@@ -319,24 +345,46 @@ const SponsorsOrbit = ({ sponsors }) => {
             </group>
         );
     }
-    // Mostrar los logos normalmente
+    // Mostrar los logos normalmente - filtrar sponsors sin logo válido
+    const validSponsors = sponsors.filter(s => s.logo && s.logo.startsWith('http'));
+    
+    if (validSponsors.length === 0) {
+        return (
+            <group ref={groupRef}>
+                <Billboard position={[0, 0, 0]}>
+                    <Text
+                        fontSize={0.3}
+                        color="#ffffff"
+                        anchorX="center"
+                        anchorY="middle"
+                    >
+                        Cargando sponsors...
+                    </Text>
+                </Billboard>
+            </group>
+        );
+    }
+    
     return (
         <group ref={groupRef}>
-            {sponsors.map((sponsor, i) => {
-                const angle = (i / sponsors.length) * Math.PI * 2;
+            {validSponsors.map((sponsor, i) => {
+                const angle = (i / validSponsors.length) * Math.PI * 2;
                 const x = Math.sin(angle) * radius;
                 const z = Math.cos(angle) * radius;
 
                 return (
                     <Billboard key={sponsor.id || i} position={[x, 0, z]}>
-                        <Image
-                            url={sponsor.logo}
-                            transparent
-                            scale={[0.89, 0.7]}
-                            onClick={() =>
-                                sponsor.website && window.open(sponsor.website, "_blank")
-                            }
-                        />
+                        <Suspense fallback={null}>
+                            <Image
+                                url={sponsor.logo}
+                                transparent
+                                scale={[0.89, 0.7]}
+                                onClick={() =>
+                                    sponsor.website && window.open(sponsor.website, "_blank")
+                                }
+                                onError={() => console.warn('Error loading logo:', sponsor.logo)}
+                            />
+                        </Suspense>
                     </Billboard>
                 );
             })}
@@ -346,38 +394,44 @@ const SponsorsOrbit = ({ sponsors }) => {
 
 
 const BallModel = ({ sponsors }) => {
-    // Preset lighting configs can be heavy, manual light is lighter
+    // Filtrar sponsors con logos válidos antes de renderizar
+    const validSponsors = (sponsors || []).filter(s => s.logo && s.logo.startsWith('http'));
+    
     return (
-        <div className="w-full h-[500px] bg-transparent relative z-50">
-            <Canvas
-                shadows={false} // Disable shadows for performance
-                dpr={[1, 2]} // Limit pixel ratio for mobile
-                camera={{ position: [0, 0, 5], fov: 45 }}
-                className="z-50"
-                gl={{ powerPreference: "high-performance", antialias: true }}
-            >
-                <ambientLight intensity={0.6} />
-                <directionalLight position={[5, 5, 5]} intensity={1.2} />
+        <ThreeErrorBoundary>
+            <div className="w-full h-[500px] bg-transparent relative z-50">
+                <Canvas
+                    shadows={false}
+                    dpr={[1, 2]}
+                    camera={{ position: [0, 0, 5], fov: 45 }}
+                    className="z-50"
+                    gl={{ powerPreference: "high-performance", antialias: true }}
+                    onError={(e) => console.error('Canvas error:', e)}
+                >
+                    <Suspense fallback={null}>
+                        <ambientLight intensity={0.6} />
+                        <directionalLight position={[5, 5, 5]} intensity={1.2} />
 
-                <Center>
-                    <OptimizedBall />
-                    <SponsorsOrbit sponsors={sponsors} />
-                </Center>
+                        <Center>
+                            <OptimizedBall />
+                            <SponsorsOrbit sponsors={validSponsors} />
+                        </Center>
 
-                {/* Reduced environment cost */}
-                <Environment preset="city" />
+                        <Environment preset="city" />
 
-                <OrbitControls
-                    makeDefault
-                    autoRotate
-                    autoRotateSpeed={0.5}
-                    minDistance={2}
-                    maxDistance={10}
-                    enableZoom={false}
-                    enablePan={false}
-                />
-            </Canvas>
-        </div>
+                        <OrbitControls
+                            makeDefault
+                            autoRotate
+                            autoRotateSpeed={0.5}
+                            minDistance={2}
+                            maxDistance={10}
+                            enableZoom={false}
+                            enablePan={false}
+                        />
+                    </Suspense>
+                </Canvas>
+            </div>
+        </ThreeErrorBoundary>
     );
 };
 

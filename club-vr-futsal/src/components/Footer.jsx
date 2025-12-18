@@ -6,7 +6,7 @@ const socialLinks = {
   facebook: 'https://www.facebook.com/share/1GriSAeL3z/',
   instagram: 'https://www.instagram.com/clubvrfutsal/',
   tiktok: 'https://www.tiktok.com/@clubv.rfutsal/',
-  whatsapp: 'https://wa.me/573008265065',
+  whatsapp: 'https://wa.me/573165404696',
 };
 
 const Footer = () => {
@@ -68,17 +68,13 @@ const Footer = () => {
               <li className="flex items-start space-x-2">
                 <FaMapMarkerAlt className="text-primary mt-1 flex-shrink-0" />
                 <span className="text-gray-400 text-sm">
-                  Calle 71 # 73a-44<br />
+                  Calle 69a # 75-32 <br />
                   Bogotá, Colombia
                 </span>
               </li>
               <li className="flex items-center space-x-2">
-                <FaPhone className="text-primary flex-shrink-0" />
-                <span className="text-gray-400 text-sm">+57 XXX XXX XXXX</span>
-              </li>
-              <li className="flex items-center space-x-2">
                 <FaEnvelope className="text-primary flex-shrink-0" />
-                <span className="text-gray-400 text-sm">info@clubvrfutsal.com</span>
+                <span className="text-gray-400 text-sm">clubvrfutsal@gmail.com</span>
               </li>
             </ul>
           </div>
