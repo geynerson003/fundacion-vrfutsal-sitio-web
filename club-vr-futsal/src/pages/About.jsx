@@ -1,21 +1,9 @@
-import { useState, useEffect } from 'react';
 import { FaCheck, FaBullseye, FaEye, FaStar } from 'react-icons/fa';
-import aboutImageDefault from '../assets/about-team.jpg';
+
+// Imagen del equipo desde Supabase Storage
+const aboutImage = 'https://lwpcpowhyfexadeukygy.supabase.co/storage/v1/object/public/gallery/about-team.jpg';
 
 const About = () => {
-  const [aboutImage, setAboutImage] = useState(aboutImageDefault);
-
-  useEffect(() => {
-    // Intentar cargar imagen desde uploads/
-    const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    
-    if (!isDevelopment) {
-      const img = new Image();
-      img.onload = () => setAboutImage('/uploads/about-team.jpg?v=' + Date.now());
-      img.onerror = () => setAboutImage(aboutImageDefault);
-      img.src = '/uploads/about-team.jpg';
-    }
-  }, []);
 
   return (
     <div className="min-h-screen pt-20">
@@ -176,9 +164,7 @@ const About = () => {
               'Participación en torneos y competencias locales',
               'Ambiente seguro y familiar para el aprendizaje',
               'Formación en valores y desarrollo personal',
-              'Uniforme y equipamiento deportivo',
               'Horarios flexibles adaptados a diferentes edades',
-              'Instalaciones adecuadas para la práctica',
               'Seguimiento personalizado del progreso de cada jugador',
               'Actividades recreativas y eventos especiales',
             ].map((benefit, index) => (

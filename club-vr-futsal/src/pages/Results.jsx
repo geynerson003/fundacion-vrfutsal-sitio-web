@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import heroBgDefault from '../assets/hero-bg.jpg';
+
+// Imagen de fondo desde Supabase Storage
+const heroBgDefault = 'https://lwpcpowhyfexadeukygy.supabase.co/storage/v1/object/public/gallery/hero-bg.jpg';
 
 const fallbackMatches = [
-  { category: 'Sub-17', rival: 'Academia Norte', score: '2 - 1', date: '2025-12-01', city: 'Manizales' },
-  { category: 'Sub-17', rival: 'Deportivo Sur', score: '0 - 3', date: '2025-12-08', city: 'Bogotá' },
-  { category: 'Sub-15', rival: 'Escuela XYZ', score: '4 - 2', date: '2025-12-03', city: 'Medellín' },
-  { category: 'Sub-13', rival: 'Academia ABC', score: '1 - 1', date: '2025-12-05', city: 'Cali' },
+  
 ];
 
 const Results = () => {

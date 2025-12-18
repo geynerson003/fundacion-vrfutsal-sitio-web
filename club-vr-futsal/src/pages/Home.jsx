@@ -1,22 +1,10 @@
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import { FaTrophy, FaUsers, FaFutbol, FaHeart } from 'react-icons/fa';
-import heroBgDefault from '../assets/hero-bg.jpg';
+
+// Imagen de fondo desde Supabase Storage
+const heroBg = 'https://lwpcpowhyfexadeukygy.supabase.co/storage/v1/object/public/gallery/hero-bg.jpg';
 
 const Home = () => {
-  const [heroBg, setHeroBg] = useState(heroBgDefault);
-
-  useEffect(() => {
-    // Intentar cargar imagen desde uploads/
-    const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    
-    if (!isDevelopment) {
-      const img = new Image();
-      img.onload = () => setHeroBg('/uploads/hero-bg.jpg?v=' + Date.now());
-      img.onerror = () => setHeroBg(heroBgDefault);
-      img.src = '/uploads/hero-bg.jpg';
-    }
-  }, []);
 
   return (
     <div className="min-h-screen">
@@ -148,7 +136,6 @@ const Home = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {[
-              { name: 'Sub-7', age: '5-6 años' },
               { name: 'Sub-9', age: '7-8 años' },
               { name: 'Sub-11', age: '9-10 años' },
               { name: 'Sub-13', age: '11-12 años' },
