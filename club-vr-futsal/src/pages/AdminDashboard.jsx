@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaImage, FaSignOutAlt, FaCheck, FaTimes, FaClock, FaHandshake, FaChartBar, FaUser } from 'react-icons/fa';
+import { FaImage, FaSignOutAlt, FaCheck, FaTimes, FaClock, FaHandshake, FaUser } from 'react-icons/fa';
 import AdminSponsors from '../components/AdminSponsors';
 import AdminSchedules from '../components/AdminSchedules';
 import AdminGallery from '../components/AdminGallery';
