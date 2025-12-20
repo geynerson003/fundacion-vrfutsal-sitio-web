@@ -34,10 +34,27 @@ const Schedule = () => {
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-green-700 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl font-bold mb-6 fade-in">Horarios y Categorías</h1>
-          <p className="text-xl max-w-3xl mx-auto">
+      <section className="relative overflow-hidden py-20 text-white">
+        {/* Fondo degradado horizontal */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-emerald-700 to-emerald-950" />
+        {/* Overlay suave para contraste */}
+        <div className="absolute inset-0 bg-black/15" />
+
+        {/* Luces suaves decorativas */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-20 -left-24 h-72 w-72 rounded-full bg-white/10 blur-2xl"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-24 -right-28 h-96 w-96 rounded-full bg-emerald-300/10 blur-2xl"
+        />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-5xl font-bold mb-6 fade-in drop-shadow-sm">
+            Horarios y Categorías
+          </h1>
+          <p className="text-xl max-w-3xl mx-auto text-white/90">
             Encuentra la categoría perfecta para tu edad y revisa nuestros horarios de entrenamiento
           </p>
         </div>

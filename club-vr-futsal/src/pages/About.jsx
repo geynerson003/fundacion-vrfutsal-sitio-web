@@ -8,10 +8,27 @@ const About = () => {
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-green-700 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl font-bold mb-6 fade-in">Sobre Nosotros</h1>
-          <p className="text-xl max-w-3xl mx-auto">
+      <section className="relative overflow-hidden py-24 text-white">
+        {/* Fondo degradado */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-emerald-700 to-emerald-950" />
+        {/* Overlay para contraste */}
+        <div className="absolute inset-0 bg-black/15" />
+
+        {/* Luces suaves decorativas */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-24 -left-24 h-80 w-80 rounded-full bg-white/10 blur-2xl"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-28 -right-28 h-96 w-96 rounded-full bg-emerald-300/10 blur-2xl"
+        />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl sm:text-5xl font-extrabold mb-6 tracking-tight fade-in drop-shadow-sm">
+            Sobre Nosotros
+          </h1>
+          <p className="text-lg sm:text-xl max-w-3xl mx-auto text-white/90">
             Conoce más sobre nuestra historia, misión y valores que nos definen
           </p>
         </div>

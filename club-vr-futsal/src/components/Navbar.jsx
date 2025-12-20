@@ -30,12 +30,12 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-lg fixed w-full top-0 z-50">
+    <nav className="bg-white/90 backdrop-blur shadow-md ring-1 ring-black/5 fixed w-full top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3" onClick={closeMenu}>
-            <Logo className="w-14 h-14" />
+            <Logo className="w-14 h-14" src="/favicon.png" alt="Fundación Deportiva Club V.R" />
             <div className="flex flex-col">
               <span className="text-xl font-bold text-secondary">Fundación Deportiva</span>
               <span className="text-sm font-semibold text-primary">Club V.R</span>

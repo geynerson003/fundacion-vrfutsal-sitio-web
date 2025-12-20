@@ -162,19 +162,39 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Call to Action */}
-      <section className="py-20 bg-gradient-to-r from-primary to-green-700 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">
+      <section className="relative overflow-hidden py-24 text-white">
+        {/* Fondo degradado */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-emerald-700 to-emerald-950" />
+        {/* Overlay para mejorar contraste del texto */}
+        <div className="absolute inset-0 bg-black/20" />
+        {/* Luces suaves decorativas */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-24 -left-24 h-80 w-80 rounded-full bg-white/10 blur-3xl"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-28 -right-28 h-96 w-96 rounded-full bg-emerald-300/10 blur-3xl"
+        />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">
             ¿Listo para ser parte de nuestra familia?
           </h2>
-          <p className="text-xl mb-8">
-            Únete a Fundación Deportiva Club V.R y descubre todo tu potencial en el fútbol sala
+          <p className="text-lg md:text-xl mb-10 text-white/90">
+          Únete a Fundación Deportiva Club V.R y descubre todo tu potencial en el fútbol sala
           </p>
           <Link
             to="/contacto"
-            className="inline-block bg-white text-primary px-10 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg"
+            className="
+              inline-flex items-center justify-center
+              bg-white/95 text-emerald-900
+              px-10 py-4 rounded-full text-lg font-semibold
+              shadow-xl ring-1 ring-white/30
+              transition-all duration-300
+              hover:bg-white hover:-translate-y-0.5 hover:shadow-2xl
+              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-900/40
+            "
           >
             Contáctanos
           </Link>
